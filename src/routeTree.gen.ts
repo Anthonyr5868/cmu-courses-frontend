@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileScheduleRouteImport } from './routes/profile/schedule'
+import { Route as ProfileSavedRouteImport } from './routes/profile/saved'
+import { Route as ProfileFriendsRouteImport } from './routes/profile/friends'
+import { Route as ProfileCurrentRouteImport } from './routes/profile/current'
+import { Route as ProfileCompletedRouteImport } from './routes/profile/completed'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileScheduleRoute = ProfileScheduleRouteImport.update({
+  id: '/profile/schedule',
+  path: '/profile/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileSavedRoute = ProfileSavedRouteImport.update({
+  id: '/profile/saved',
+  path: '/profile/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileFriendsRoute = ProfileFriendsRouteImport.update({
+  id: '/profile/friends',
+  path: '/profile/friends',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileCurrentRoute = ProfileCurrentRouteImport.update({
+  id: '/profile/current',
+  path: '/profile/current',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileCompletedRoute = ProfileCompletedRouteImport.update({
+  id: '/profile/completed',
+  path: '/profile/completed',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/profile/completed': typeof ProfileCompletedRoute
+  '/profile/current': typeof ProfileCurrentRoute
+  '/profile/friends': typeof ProfileFriendsRoute
+  '/profile/saved': typeof ProfileSavedRoute
+  '/profile/schedule': typeof ProfileScheduleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/profile/completed': typeof ProfileCompletedRoute
+  '/profile/current': typeof ProfileCurrentRoute
+  '/profile/friends': typeof ProfileFriendsRoute
+  '/profile/saved': typeof ProfileSavedRoute
+  '/profile/schedule': typeof ProfileScheduleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/profile/completed': typeof ProfileCompletedRoute
+  '/profile/current': typeof ProfileCurrentRoute
+  '/profile/friends': typeof ProfileFriendsRoute
+  '/profile/saved': typeof ProfileSavedRoute
+  '/profile/schedule': typeof ProfileScheduleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/profile/completed'
+    | '/profile/current'
+    | '/profile/friends'
+    | '/profile/saved'
+    | '/profile/schedule'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/profile/completed'
+    | '/profile/current'
+    | '/profile/friends'
+    | '/profile/saved'
+    | '/profile/schedule'
+  id:
+    | '__root__'
+    | '/'
+    | '/profile/completed'
+    | '/profile/current'
+    | '/profile/friends'
+    | '/profile/saved'
+    | '/profile/schedule'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProfileCompletedRoute: typeof ProfileCompletedRoute
+  ProfileCurrentRoute: typeof ProfileCurrentRoute
+  ProfileFriendsRoute: typeof ProfileFriendsRoute
+  ProfileSavedRoute: typeof ProfileSavedRoute
+  ProfileScheduleRoute: typeof ProfileScheduleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/schedule': {
+      id: '/profile/schedule'
+      path: '/profile/schedule'
+      fullPath: '/profile/schedule'
+      preLoaderRoute: typeof ProfileScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/saved': {
+      id: '/profile/saved'
+      path: '/profile/saved'
+      fullPath: '/profile/saved'
+      preLoaderRoute: typeof ProfileSavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/friends': {
+      id: '/profile/friends'
+      path: '/profile/friends'
+      fullPath: '/profile/friends'
+      preLoaderRoute: typeof ProfileFriendsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/current': {
+      id: '/profile/current'
+      path: '/profile/current'
+      fullPath: '/profile/current'
+      preLoaderRoute: typeof ProfileCurrentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/completed': {
+      id: '/profile/completed'
+      path: '/profile/completed'
+      fullPath: '/profile/completed'
+      preLoaderRoute: typeof ProfileCompletedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProfileCompletedRoute: ProfileCompletedRoute,
+  ProfileCurrentRoute: ProfileCurrentRoute,
+  ProfileFriendsRoute: ProfileFriendsRoute,
+  ProfileSavedRoute: ProfileSavedRoute,
+  ProfileScheduleRoute: ProfileScheduleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

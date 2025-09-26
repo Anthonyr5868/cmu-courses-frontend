@@ -1,45 +1,44 @@
 import { BookmarkAdd, CalendarDate, CalendarPlus02, Check, ChevronLeft, ChevronRight, Users01 } from '@scottylabs/corgi';
 import { Link } from '@tanstack/react-router';
-import React from 'react';
 
 const USER_INFO = {
     name: 'Andrew Carnegie',
     major: 'Computer Science',
 }
 
-interface ProfileProps {
+interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-function Profile({ isOpen, onClose }: ProfileProps)  {
+export default function Sidebar({ isOpen, onClose }: SidebarProps)  {
   if (!isOpen) return null;
 
   const menuItems = [
     {
       icon: BookmarkAdd,
       label: 'Saved Courses',
-      href: '/saved',
+      href: '/profile/saved',
     },
     {
       icon: CalendarDate,
       label: 'Currently Taking',
-      href: '/current',
+      href: '/profile/current',
     },
     {
       icon: Check,
       label: 'Courses Taken',
-      href: '/completed',
+      href: '/profile/completed',
     },
     {
       icon: CalendarPlus02,
       label: 'Schedule',
-      href: '/schedule',
+      href: '/profile/schedule',
     },
     {
       icon: Users01,
       label: 'Friends',
-      href: '/friends',
+      href: '/profile/friends',
     },
   ];
 
@@ -75,7 +74,7 @@ function Profile({ isOpen, onClose }: ProfileProps)  {
             <Link
               key={item.label}
               to={item.href}
-              className="text-fg-brandNeutral-primary flex items-center justify-between px-4 py-3 hover:bg-bg-brandNeutral-subtle-pressed transition-colors"
+              className="text-fg-brandNeutral-primary flex items-center justify-between px-4 py-3 hover:bg-bg-brandNeutral-secondary-enabled transition-colors [&.active]:bg-bg-brandNeutral-subtle-pressed"
               onClick={onClose}
             >
               <div className="flex items-center space-x-3">
@@ -89,5 +88,3 @@ function Profile({ isOpen, onClose }: ProfileProps)  {
       </div>
   );
 };
-
-export default Profile;

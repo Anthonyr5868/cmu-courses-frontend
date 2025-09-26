@@ -10,6 +10,7 @@
   --color-bg-brandNeutral-secondary-hover: #D9E1E7;
   --color-bg-brandNeutral-subtle-pressed: #D9E1E7;
   --color-bg-brandNeutral-subtle-enabled: #ffffff;
+  --color-bg-disabled-brandNeutral: #f0F4F8;
   --color-bg-neutral-primary: #ffffff;
   --color-fg-brandNeutral-secondary: #7A8FA3;
   --color-fg-onBrand-primary: #ffffff;
@@ -17,6 +18,7 @@
   --color-fg-brand-secondary: #0D89BE;
   --color-fg-brandNeutral-primary: #4A5662;
   --color-fg-neutral-onInverse: #ffffff;
+  --color-fg-neutral-primary: #1e1e1e;
 }
 
 body {
