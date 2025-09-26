@@ -1,26 +1,53 @@
 import { Link } from "@tanstack/react-router";
-import { Clock, SearchMd, Star01, UserSquare, Sun, LogOut01 } from "@scottylabs/corgi";
+import { Clock, SearchMd, Star01, UserSquare, Sun, LogOut01, User02 } from "@scottylabs/corgi";
 import { useState } from "react";
 import type { ReactElement } from "react";
 
+const HEADER_LINKS = [
+  {
+    text: "Search",
+    icon: <SearchMd />,
+    link: "/"
+  },
+  {
+    text: "Instructors",
+    icon: <UserSquare />,
+    link: "/instructors"
+  },
+  {
+    text: "Schedules",
+    icon: <Clock />,
+    link: "/schedules"
+  },
+  {
+    text: "Profile",
+    icon: <User02 />,
+    link: "/profile"
+  }
+];
+
 export default function Header() {
   return (
-    <div className="flex flex-row items-center justify-between px-6 py-6 bg-gray-100 shadow-lg">
-      <div className="flex flex-initial cursor-pointer flex-row justify-start font-semibold text-gray-800">
+    <div className="sticky w-full z-99 flex flex-row items-center justify-between px-6 py-6 bg-bg-brandNeutral-secondary-enabled shadow-lg h-[85px]">
+      <div className="flex flex-initial cursor-pointer flex-row justify-start font-semibold text-fg-brandNeutral-primary">
         <Link to="/">
           <div className="flex items-center">
-            <img src="/favicon.png" className="w-8 rounded" />
+            <img src="/favicon.png" className="h-9 rounded" />
             <span className="ml-2">CMU Courses</span>
           </div>
         </Link>
       </div>
       <div className="flex flex-row items-center">
-        <HeaderLink text="Search" icon={<SearchMd />} link="/" />
-        <HeaderLink text="Instructors" icon={<UserSquare />} link="/instructors" />
-        <HeaderLink text="Saved" icon={<Star01 />} link="/saved" />
-        <HeaderLink text="Schedules" icon={<Clock />} link="clock" />
+        {HEADER_LINKS.map((headerLink) => (
+          <HeaderLink 
+            key={headerLink.text}
+            text={headerLink.text} 
+            icon={headerLink.icon} 
+            link={headerLink.link} 
+          />
+        ))}
       </div>
-      <div className="flex flex-row items-center justify-between gap-x-2 text-gray-600">
+      <div className="flex flex-row items-center justify-between gap-x-2 text-fg-brandNeutral-primary">
         <NavbarButtons />
       </div>
     </div>
@@ -35,15 +62,14 @@ type HeaderLinkProps = {
 
 function HeaderLink({ text, icon, link }: HeaderLinkProps) {
   return (
-    <Link to={link}>
-      <div className="flex flex-row items-center gap-2 px-3 py-2 rounded-md hover:bg-gray-200 transition">
+    <Link to={link} className="[&.active]:text-fg-brand-secondary">
+      <div className="flex flex-row items-center justify-center gap-2 px-3 py-2 rounded-md hover:bg-gray-200 transition" >
         {icon}
-        <span>{text}</span>
+        <span className="mb-[-2px]">{text}</span>
       </div>
     </Link>
   );
 }
-
 
 function NavbarButtons() {
   const [darkMode, setDarkMode] = useState(false);
@@ -52,20 +78,20 @@ function NavbarButtons() {
     <div className="flex items-center space-x-4">
       <button
         onClick={() => setDarkMode(!darkMode)}
-        className="w-12 h-6 flex items-center rounded-full border border-gray-300 bg-gray-100 dark:bg-gray-800 transition-all"
+        className="w-16 h-8 flex items-center rounded-full border border-fg-brandNeutral-secondary transition-all relative"
       >
         <div
-          className={`flex items-center justify-center w-6 h-6 rounded-full bg-white shadow-md transform transition-transform ${
-            darkMode ? "translate-x-6" : "translate-x-0"
+          className={`absolute w-7 h-7 rounded-full bg-fg-brandNeutral-secondary shadow-md flex items-center justify-center transform transition-transform ${
+            darkMode ? "translate-x-8" : "translate-x-0.5"
           }`}
         >
-          <Sun className="w-4 h-4 text-gray-600" />
+          <Sun className="w-4 h-4 text-fg-neutral-onInverse" />
         </div>
       </button>
 
-      <button className="flex items-center space-x-2 border border-gray-300 px-4 py-1.5 rounded-full hover:bg-gray-100 transition">
+      <button className="flex items-center space-x-2 border border-stroke-brandNeutral-1 px-4 py-1.5 rounded-full hover:bg-gray-300 cursor-pointer transition text-fg-brandNeutral-primary">
         <LogOut01 className="w-4 h-4" />
-        <span className="text-sm font-medium">Sign out</span>
+        <span className="">Sign out</span>
       </button>
     </div>
   );

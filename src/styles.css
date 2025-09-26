@@ -1,9 +1,27 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@theme {
+  --color-stroke-brandNeutral-1: #9EB1C2;
+  --color-bg-brandNeutral-secondary-pressed: #C7D2DC;
+  --color-bg-brandNeutral-primary: #4A5662;
+  --color-bg-brandNeutral-secondary: #7A8FA3;
+  --color-bg-brandNeutral-secondary-enabled: #F0F4F8;
+  --color-bg-brandNeutral-secondary-hover: #D9E1E7;
+  --color-bg-brandNeutral-subtle-pressed: #D9E1E7;
+  --color-bg-brandNeutral-subtle-enabled: #ffffff;
+  --color-bg-neutral-primary: #ffffff;
+  --color-fg-brandNeutral-secondary: #7A8FA3;
+  --color-fg-onBrand-primary: #ffffff;
+  --color-fg-primary: #4A5662;
+  --color-fg-brand-secondary: #0D89BE;
+  --color-fg-brandNeutral-primary: #4A5662;
+  --color-fg-neutral-onInverse: #ffffff;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
