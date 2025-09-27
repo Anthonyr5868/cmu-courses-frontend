@@ -3,6 +3,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanstackDevtools } from '@tanstack/react-devtools'
 import Header from '@/components/Header'
 import Profile from '@/components/Sidebar'
+import Footer from '@/components/Footer'
 
 export const Route = createRootRoute({
   component: () => (
@@ -13,6 +14,7 @@ export const Route = createRootRoute({
           <Profile isOpen={true} onClose={() => {}} />
           <Outlet />
         </div>
+        <Footer />
       </div>
       <TanstackDevtools
         config={{

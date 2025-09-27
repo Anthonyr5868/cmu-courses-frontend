@@ -29,11 +29,11 @@ const HEADER_LINKS = [
 export default function Header() {
   return (
     <div className="sticky w-full z-99 flex flex-row items-center justify-between px-6 py-6 bg-bg-brandNeutral-secondary-enabled shadow-lg h-[85px]">
-      <div className="flex flex-initial cursor-pointer flex-row justify-start font-semibold text-fg-brandNeutral-primary">
+      <div className="flex flex-initial cursor-pointer flex-row justify-start font-semibold text-fg-brandNeutral-secondary">
         <Link to="/">
           <div className="flex items-center">
             <img src="/favicon.png" className="h-9 rounded" />
-            <span className="ml-2">CMU Courses</span>
+            <span className="ml-4 text-fg-brandNeutral-primary">CMU Courses</span>
           </div>
         </Link>
       </div>
@@ -47,7 +47,7 @@ export default function Header() {
           />
         ))}
       </div>
-      <div className="flex flex-row items-center justify-between gap-x-2 text-fg-brandNeutral-primary">
+      <div className="flex flex-row items-center justify-between gap-x-2 text-fg-brandNeutral-secondary">
         <NavbarButtons />
       </div>
     </div>
@@ -63,9 +63,9 @@ type HeaderLinkProps = {
 function HeaderLink({ text, icon, link }: HeaderLinkProps) {
   return (
     <Link to={link} className="[&.active]:text-fg-brand-secondary">
-      <div className="flex flex-row items-center justify-center gap-2 px-3 py-2 rounded-md hover:bg-gray-200 transition" >
-        {icon}
-        <span className="mb-[-2px]">{text}</span>
+      <div className="flex flex-row items-center justify-center gap-2 px-3 py-2 rounded-md hover:bg-gray-200 transition text-fg-brandNeutral-secondary" >
+        <span className="flex items-center text-fg-brandNeutral-secondary">{icon}</span>
+        <span className="mb-[-2px] text-fg-brandNeutral-secondary">{text}</span>
       </div>
     </Link>
   );
@@ -75,23 +75,23 @@ function NavbarButtons() {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4">
       <button
         onClick={() => setDarkMode(!darkMode)}
-        className="w-16 h-8 flex items-center rounded-full border border-fg-brandNeutral-secondary transition-all relative"
+           className="w-13 h-7 flex items-center rounded-full border-[1.5px] border-fg-brandNeutral-secondary transition-all relative"
       >
         <div
-          className={`absolute w-7 h-7 rounded-full bg-fg-brandNeutral-secondary shadow-md flex items-center justify-center transform transition-transform ${
-            darkMode ? "translate-x-8" : "translate-x-0.5"
+          className={`absolute w-5 h-5 rounded-full bg-fg-brandNeutral-secondary shadow-md flex items-center justify-center transform transition-transform ${
+            darkMode ? "translate-x-[27px]" : "translate-x-[2.1px]"
           }`}
         >
           <Sun className="w-4 h-4 text-fg-neutral-onInverse" />
         </div>
       </button>
 
-      <button className="flex items-center space-x-2 border border-stroke-brandNeutral-1 px-4 py-1.5 rounded-full hover:bg-gray-300 cursor-pointer transition text-fg-brandNeutral-primary">
-        <LogOut01 className="w-4 h-4" />
-        <span className="">Sign out</span>
+        <button className="flex items-center space-x-2 border border-stroke-brandNeutral-1 px-4 py-1.5 rounded-full hover:bg-gray-300 cursor-pointer transition border-[1.5px]">
+  <LogOut01 className="w-5 h-5 text-fg-brandNeutral-primary stroke-2" />
+        <span className="text-fg-brandNeutral-primary font-semibold">Sign out</span>
       </button>
     </div>
   );
